@@ -40,6 +40,10 @@ def main():
         for entity in updatable:
             entity.update(dt)
         for asteroid in asteroids:
+            for bullet in shots:
+                if asteroid.doesCollide(bullet):
+                    asteroid.split()
+                    bullet.kill()
             if asteroid.doesCollide(player):
                 print("Game over!")
                 sys.exit()
